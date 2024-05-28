@@ -224,6 +224,16 @@
                   v-model:value="form.netmask"
                 ></a-input>
               </a-form-item>
+              <a-form-item :label="$t('label.description')" ref="description" name="description">
+                <a-textarea
+                  :placeholder="placeholder.description"
+                  v-model="form.description"
+                  auto-size="{
+                    minRows: 2,
+                    maxRows: 5
+                  }"
+                ></a-textarea>
+              </a-form-item>
               <a-form-item :label="$t('label.sourcenat')" ref="nat" name="nat">
                 <a-checkbox v-model:checked="form.nat"></a-checkbox>
               </a-form-item>
@@ -433,7 +443,8 @@ export default {
         vlan: null,
         ipaddress: null,
         gateway: null,
-        netmask: null
+        netmask: null,
+        description: null
       },
       physicalnetworks: [],
       vpncustomergateways: [],
@@ -459,6 +470,11 @@ export default {
         {
           title: this.$t('label.vlan'),
           dataIndex: 'vlan'
+        },
+        {
+          key: 'description',
+          title: this.$t('label.description'),
+          dataIndex: 'description'
         }
       ],
       vpnConnectionsColumns: [
